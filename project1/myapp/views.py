@@ -4,6 +4,7 @@ from django.contrib  import messages
 
 # Create your views here.
 def home(request):
+    """Function for login."""
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -17,13 +18,14 @@ def home(request):
             messages.success(request, "Login Error")
             return redirect('home')
     else:
-        return render(request, 'home.html', {})
-    
+        return render(request, 'home.html', {})    
 
-# def loginUser(request):
-#     return render(request, 'login.html', {})
-
-def logoutUser(request):
+def logout_user(request):
+    """Function for logout user."""
     logout(request)
     messages.success(request, "Logout Successful")
     return redirect('home')
+
+def register_user(request):
+    """Function for registering user."""
+    return render(request, 'register.html', {})
